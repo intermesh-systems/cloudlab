@@ -36,9 +36,8 @@ echo "key is $INTERMESH_KEY"
 
 chmod 400 $INTERMESH_KEY
 chmod 400 $DEATHSTARBENCH_KEY
-git clone git@github.com:Ngalstyan4/DeathStarBench4intermesh.git --config core.sshCommand="ssh -i $DEATHSTARBENCH_KEY"
-pushd DeathStarBench4intermesh/hotelReservation/
-	git checkout narek
+git clone git@github.com:intermesh-systems/im-deathstarbench.git --config core.sshCommand="ssh -i $DEATHSTARBENCH_KEY"
+pushd im-deathstarbench/hotelReservation/
 	echo "running docker build"
 	sudo bash ./docker_scripts/build-docker-images.sh
 	echo "done with docker build"
