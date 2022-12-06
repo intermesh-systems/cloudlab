@@ -19,7 +19,7 @@ cd ~
 curl -L https://istio.io/downloadIstio | sh -
 echo 'PATH="$PATH:$HOME/istio-1.16.0/bin"' >> ~/.bashrc
 export PATH="$PATH:$HOME/istio-1.16.0/bin"
-echo "export REMOTEINTERMESDOMAIN=$REMOTEINTERMESHDDOMAIN"
+echo "export REMOTEINTERMESDOMAIN=$REMOTEINTERMESHDDOMAIN" >> ~/.bashrc
 source ~/.bashrc
 
 istioctl install --set profile=demo -y
