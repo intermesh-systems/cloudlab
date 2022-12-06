@@ -71,7 +71,7 @@ pushd im-deathstarbench/hotelReservation/
 	pushd wrk2
 		make
 	popd
-
+	
 	# N.B. assumes the following or equivalent has run on all nodes so all nodes are able to
 	# get to the cluster-local image repo via localhost
 	#sudo iptables -t nat -A OUTPUT  -p tcp -d localhost --dport 5001 -j DNAT --to 10.10.1.1:5000
@@ -90,6 +90,10 @@ pushd im-deathstarbench/hotelReservation/
 	if [ "$CLUSTERROLE" = "primary" ]; then
 		kubectl delete -Rf kubernetes/
 		kubectl apply -Rf kubernetes/
+		kubectl delete -Rf kubernetes/frontend/
+		envsubst < kubernetes/frontend/frontend-deployment.yaml | kubectl apply -f -
+		kubectl apply -f kubernetes/frontend/frontend-service.yaml
+
 		tmux send-keys -t $SESSION:0.2 "cd ~/intermesh_universe/intermesh/ && python intermesh/intermesh_ctl.py peer --cluster_domain $REMOTEINTERMESHDDOMAIN"
 
 	else
