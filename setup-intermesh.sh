@@ -42,26 +42,26 @@ pushd im-deathstarbench/hotelReservation/
 
 	# Put the docker images for jaeger, consul, memcached, mongo into the local registry.
 	# First pull from docker hub.
-	docker pull consul:latest
+	sudo docker pull consul:latest
 	# Then tag and push to local registry.
-	docker tag consul:latest localhost:5001/consul:latest
+	sudo docker tag consul:latest localhost:5001/consul:latest
 	# Push to local registry.
-	docker push localhost:5001/consul:latest
+	sudo docker push localhost:5001/consul:latest
 
 	# Do the same for jaeger.
-	docker pull jaegertracing/all-in-one:latest
-	docker tag jaegertracing/all-in-one:latest localhost:5001/jaegertracing/all-in-one:latest
-	docker push localhost:5001/jaegertracing/all-in-one:latest
+	sudo docker pull jaegertracing/all-in-one:latest
+	sudo docker tag jaegertracing/all-in-one:latest localhost:5001/jaegertracing/all-in-one:latest
+	sudo docker push localhost:5001/jaegertracing/all-in-one:latest
 
 	# Do the same for memcached.
-	docker pull memcached:latest
-	docker tag memcached:latest localhost:5001/memcached:latest
+	sudo docker pull memcached:latest
+	sudo docker tag memcached:latest localhost:5001/memcached:latest
 	docker push localhost:5001/memcached:latest
 
 	# Do the same for mongo.
-	docker pull mongo:4.4.6
-	docker tag mongo:4.4.6 localhost:5001/mongo:4.4.6
-	docker push localhost:5001/mongo:4.4.6
+	sudo docker pull mongo:4.4.6
+	sudo docker tag mongo:4.4.6 localhost:5001/mongo:4.4.6
+	sudo docker push localhost:5001/mongo:4.4.6
 
 	echo "running docker build"
 	sudo bash ./docker_scripts/build-docker-images.sh
