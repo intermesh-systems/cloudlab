@@ -19,7 +19,7 @@ cd ~
 curl -L https://istio.io/downloadIstio | sh -
 echo 'PATH="$PATH:$HOME/istio-1.16.0/bin"' >> ~/.bashrc
 export PATH="$PATH:$HOME/istio-1.16.0/bin"
-echo "export REMOTEINTERMESDOMAIN=$REMOTEINTERMESHDDOMAIN" >> ~/.bashrc
+echo "export REMOTEINTERMESHDDOMAIN=$REMOTEINTERMESHDDOMAIN" >> ~/.bashrc
 source ~/.bashrc
 
 istioctl install --set profile=demo -y
@@ -85,7 +85,7 @@ pushd im-deathstarbench/hotelReservation/
 	tmux split-window -h -t $SESSION:0.0
 	tmux split-window -v -t $SESSION:0.1
 	sleep 10
-	tmux send-keys -t $SESSION:0.1 "cd ~/intermesh_universe/intermesh/ && bash scripts/launch_intermesh.sh" Enter
+	tmux send-keys -t $SESSION:0.1 "cd ~/intermesh_universe/intermesh/ && bash sudo scripts/launch_intermesh.sh" Enter
 
 	if [ "$CLUSTERROLE" = "primary" ]; then
 		kubectl delete -Rf kubernetes/
