@@ -266,6 +266,11 @@ if [ -n "${HELMVERSION}" ]; then
     echo "helm_version: ${HELMVERSION}" >> $OVERRIDES
 fi
 
+# Make sure that we use coredns.
+echo "kube_dns_mode: coredns" >> $OVERRIDES
+# Set the address of the coredns service.
+echo "kube_dns_service_ip: 10.93.0.3" >> $OVERRIDES
+
 #
 # Add a bunch of options most people will find useful.
 #
